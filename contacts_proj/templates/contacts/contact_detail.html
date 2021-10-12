@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Contact Details for: {{contact.first_name}} {{contact.last_name}}</h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Street Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip Code</th>
+      <th>Phone Number</th>
+      <th>Email Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{contact.street}}</td>
+      <td>{{contact.city}}</td>
+      <td>{{contact.state}}</td>
+      <td>{{contact.zip}}</td>
+      <td>{{contact.phone}}</td>
+      <td>{{contact.email}}</td>
+      <td><a href="{% url 'contact_app:edit_contact' subject_id=subject.id contact_id=contact.id %}">Edit</a></td>
+      <td><a href="{% url 'contact_app:delete_contact' subject_id=subject.id contact_id=contact.id %}">Delete</a></td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<a href="{% url 'contact_app:contact_list' subject_id=subject.id %}">Back</a>
+<br />
+<br />
+<iframe width="600" height="450" frameborder="0" style="border:0" src="{{map}}" allowfullscreen></iframe>
+{% endblock %}

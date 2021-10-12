@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>All Contact Groups for {{user.username}}</h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for subject in subjects %}
+    <tr>
+      <td>{{subject.title}}</td>
+      <td><a href="{% url 'contact_app:subject_detail' subject.id %}">View</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<br />
+<a href="{% url 'contact_app:new_subject' %}">New Contact Group</a>
+{% endblock %}

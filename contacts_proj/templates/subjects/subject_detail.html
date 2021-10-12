@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Subject Details for {{subject.title}}</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Created on Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{subject.description}}</td>
+      <td>{{subject.created_on}}</td>
+      <td><a href="{% url 'contact_app:contact_list' subject_id=subject.id %}">Contacts</a></td>
+      <td><a href="{% url 'contact_app:edit_subject' subject.id %}">Edit</a></td>
+      <td><a href="{% url 'contact_app:delete_subject' subject.id %}">Delete</a></td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<a href="{% url 'contact_app:subject_list' %}">Back</a>
+{% endblock %}
